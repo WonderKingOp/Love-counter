@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Countdown to Love</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      color: #333;
+    }
+    .countdown {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 90%;
+      width: 400px;
+    }
+    .countdown h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ff6f61;
+      font-family: 'Pacifico', cursive;
+    }
+    .countdown-timer {
+      display: flex;
+      justify-content: space-around;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .countdown-timer div {
+      text-align: center;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      flex: 1 1 100px;
+    }
+    .countdown-timer span {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #ff6f61;
+    }
+    .countdown-timer p {
+      margin: 5px 0 0;
+      font-size: 1rem;
+      color: #555;
+    }
+    @media (max-width: 600px) {
+      .countdown h1 {
+        font-size: 1.5rem;
+      }
+      .countdown-timer span {
+        font-size: 1.5rem;
+      }
+      .countdown-timer p {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="countdown">
+    <h1>Counting the Moments Until We Meet Again 💖</h1>
+    <div class="countdown-timer">
+      <div>
+        <span id="days">00</span>
+        <p>Days</p>
+      </div>
+      <div>
+        <span id="hours">00</span>
+        <p>Hours</p>
+      </div>
+      <div>
+        <span id="minutes">00</span>
+        <p>Minutes</p>
+      </div>
+      <div>
+        <span id="seconds">00</span>
+        <p>Seconds</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set the target date and time
+    const targetDate = new Date("February 15, 2025 13:00:00").getTime();
+
+    // Update the countdown every second
+    const countdown = setInterval(() => {
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      // Calculate days, hours, minutes, and seconds
+      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      // Display the result
+      document.getElementById("days").innerText = days;
+      document.getElementById("hours").innerText = hours;
+      document.getElementById("minutes").innerText = minutes;
+      document.getElementById("seconds").innerText = seconds;
+
+      // If the countdown is over, display a message
+      if (timeLeft < 0) {
+        clearInterval(countdown);
+        document.querySelector(".countdown h1").innerText = "Bass pohochne vale hai jaanu 💕";
+        document.querySelector(".countdown-timer").style.display = "none";
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
